@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>指文字クイズ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 初期画面 -->
+<div id="start-screen">
+  <h1>指文字クイズ</h1>
+
+  <!-- 文字数選択 -->
+  <h2>文字数</h2>
+  <div class="select-group">
+    <!-- <button onclick="selectLength(2)" id="len2">2文字</button> -->
+    <button onclick="selectLength(3)" id="len3">3文字</button>
+    <button onclick="selectLength(4)" id="len4">4文字</button>
+    <button onclick="selectLength(5)" id="len5">5文字</button>
+    <button onclick="selectLength(6)" id="len6">6文字</button>
+  </div>
+
+  <!-- スピード選択 -->
+  <h2>表示スピード</h2>
+  <div class="select-group">
+    <button onclick="selectSpeed(1200)" id="spd1200">ゆっくり</button>
+    <button onclick="selectSpeed(800)" id="spd800">ふつう</button>
+    <button onclick="selectSpeed(500)" id="spd500">はやい</button>
+  </div>
+
+  <!-- 開始 -->
+  <button class="start-btn" onclick="startQuiz()">始める</button>
+</div>
+
+<!-- クイズ画面 -->
+<div id="quiz-screen" style="display:none;">
+
+  <h1>指文字クイズ</h1>
+
+  <!-- スコア -->
+  <div id="score">0 / 0</div>
+
+  <!-- 選択肢 -->
+  <div id="choices"></div>
+
+  <!-- 指文字表示 -->
+  <div id="image-area"></div>
+
+  <!-- 結果 -->
+  <div id="result"></div>
+
+  <!-- 操作（固定エリア） -->
+  <div class="fixed-bottom">
+    <button onclick="nextQuiz()">次の問題</button>
+
+    <button id="replayBtn" onclick="replay()">
+      もう一度表示
+    </button>
+
+    <button onclick="endQuiz()">終了</button>
+  </div>
+
+</div>
+
+<!-- ★ここ重要：順番！！ -->
+<script src="words.js?v=2"></script>
+<script src="classify.js?v=2"></script>
+<script src="kana.js?v=2"></script>
+<script src="app.js?v=2"></script>
+
+</body>
+</html>

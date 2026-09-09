@@ -1,0 +1,209 @@
+/* 全体の余白 */
+body {
+  margin: 0;
+  padding: 5px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/* ボタン共通 */
+button {
+  font-size: 18px;
+  padding: 15px;
+  margin: 8px;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 押したときの反応 */
+button:active {
+  transform: scale(0.97);
+}
+
+/* 選択グループ（縦並び） */
+.select-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 選択グループ（横並び） */
+.speed-group {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.speed-group button {
+  width: auto;
+  min-width: 90px;
+  padding: 12px 16px;
+}
+
+/* スタートボタンは大きく */
+.start-btn {
+  font-size: 22px;
+  padding: 18px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* 選択肢ボタン（クイズ中） */
+#choices button {
+  font-size: 20px;
+  padding: 14px;
+  margin: 6px;
+}
+
+/* 画像配置位置調整 */
+#image-area {
+  padding-top: 70px;
+  min-height: 240px;
+  margin-bottom: 4px;
+}
+
+/* 画像サイズ調整 */
+#image-area img {
+  width: 70%;
+  max-width: 250px;
+  transition: transform 0.2s ease;
+}
+
+/* 正解時の画像サイズ */
+#image-area.all-images img {
+  width: 60%;
+  max-width: 150px;
+  margin-bottom: 6px;
+}
+
+/* ボタン固定 */
+.fixed-bottom {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: white;
+  padding: 10px 5px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* ボタン間隔 */
+.fixed-bottom button {
+  flex: 1;              /* 均等に広がる */
+  margin: 0 5px;
+  padding: 12px;
+  font-size: 16px;
+  max-width: none;      /* 300px制限解除 */
+}
+
+/* 最初のボタン（次の問題）強調 */
+.fixed-bottom button:first-child {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* ボタン分の余白 */
+#quiz-screen {
+  padding-bottom: 120px; 
+}
+
+/* ===== test.html専用（style.cssの末尾に追加） ===== */
+
+body.test-mode {
+  padding: 4px;
+}
+
+/* タイトル */
+body.test-mode h1 {
+  font-size: 22px;
+  margin: 4px 0 8px;
+}
+
+/* 小見出し */
+body.test-mode h2 {
+  font-size: 15px;
+  margin: 6px 0 4px;
+}
+
+/* 入力欄 */
+body.test-mode input {
+  width: 80%;
+  max-width: 240px;
+  font-size: 18px;
+  padding: 6px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* ボタン共通 */
+body.test-mode button {
+  font-size: 14px;
+  padding: 8px 12px;
+  margin: 3px;
+  width: auto;
+  max-width: none;
+}
+
+/* スピードボタン横並び */
+body.test-mode .speed-group {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+body.test-mode .speed-group button {
+  min-width: 78px;
+}
+
+/* 再生ボタン */
+body.test-mode .play-btn {
+  font-size: 16px;
+  padding: 10px 18px;
+  background: #4CAF50;
+  color: white;
+}
+
+/* 区切り線 */
+body.test-mode hr {
+  margin: 8px 0;
+}
+
+/* 指文字表示領域 */
+body.test-mode #image-area {
+  margin-top: 8px;
+  min-height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 画像 */
+body.test-mode #image-area img {
+  width: 80%;
+  max-width: 260px;
+}
+
+/* 小さい画面用 */
+@media (max-height: 700px) {
+  body.test-mode #image-area {
+    min-height: 220px;
+  }
+
+  body.test-mode h1 {
+    font-size: 20px;
+  }
+
+  body.test-mode input {
+    font-size: 16px;
+  }
+}
