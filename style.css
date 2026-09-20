@@ -225,14 +225,14 @@ body.test-mode #image-area img {
   }
 
   .select-group button {
-    min-width: 62px;
-    font-size: 16px;
-    padding: 8px 10px;
-    margin: 3px;
+    min-width: 80px;
+    font-size: 22px;
+    padding: 10px 14px;
+    margin: 4px;
   }
 
   .start-btn {
-    font-size: 20px;
+    font-size: 22px;
     padding: 13px 28px;
   }
 }
