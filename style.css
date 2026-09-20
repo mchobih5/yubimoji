@@ -27,9 +27,9 @@ button {
 
 /* 選択ボタン */
 .select-group button {
-  min-width: 75px;
+  min-width: 80px;
   font-size: 22px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   margin: 4px;
 }
 
