@@ -49,8 +49,16 @@ function selectSpeed(speed) {
 
   document.getElementById("spd" + speed).style.background = "#87CEFA";
 
-  // スピードを選択したら、「始める」を表示
-  document.getElementById("start-area").style.display = "block";
+  const startArea = document.getElementById("start-area");
+  startArea.style.display = "block";
+
+  // 「始める」が画面外に出ていたら、自動的に見える位置までスクロール
+  requestAnimationFrame(() => {
+    startArea.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  });
 }
 
 // ===== 回答選択肢生成 =====
