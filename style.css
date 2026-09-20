@@ -8,7 +8,7 @@ body {
 
 /* ボタン共通 */
 button {
-  font-size: 18px;
+  font-size: 22px;
   padding: 10px 14px;
   margin: 5px;
   border-radius: 10px;
@@ -28,7 +28,7 @@ button {
 /* 選択ボタン */
 .select-group button {
   min-width: 75px;
-  font-size: 18px;
+  font-size: 22px;
   padding: 10px 12px;
   margin: 4px;
 }
