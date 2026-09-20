@@ -24,15 +24,19 @@
   </div>
 
   <!-- スピード選択 -->
-  <h2>表示スピード</h2>
-  <div class="select-group">
-    <button onclick="selectSpeed(1200)" id="spd1200">ゆっくり</button>
-    <button onclick="selectSpeed(800)" id="spd800">ふつう</button>
-    <button onclick="selectSpeed(500)" id="spd500">はやい</button>
+  <div id="speed-select" style="display:none;">
+    <h2>表示スピード</h2>
+    <div class="select-group">
+      <button onclick="selectSpeed(1200)" id="spd1200">ゆっくり</button>
+      <button onclick="selectSpeed(800)" id="spd800">ふつう</button>
+      <button onclick="selectSpeed(500)" id="spd500">はやい</button>
+    </div>
   </div>
 
   <!-- 開始 -->
-  <button class="start-btn" onclick="startQuiz()">始める</button>
+  <div id="start-area" style="display:none;">
+    <button class="start-btn" onclick="startQuiz()">始める</button>
+  </div>
 </div>
 
 <!-- クイズ画面 -->

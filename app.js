@@ -31,6 +31,12 @@ function selectLength(len) {
   });
 
   document.getElementById("len" + len).style.background = "#87CEFA";
+
+  // 文字数を選択したら、スピード選択を表示
+  document.getElementById("speed-select").style.display = "block";
+
+  // スピードをまだ選んでいない状態に戻す
+  document.getElementById("start-area").style.display = "none";
 }
 
 // ===== 表示スピード選択 =====
@@ -42,6 +48,9 @@ function selectSpeed(speed) {
   document.getElementById("spd500").style.background = "";
 
   document.getElementById("spd" + speed).style.background = "#87CEFA";
+
+  // スピードを選択したら、「始める」を表示
+  document.getElementById("start-area").style.display = "block";
 }
 
 // ===== 回答選択肢生成 =====

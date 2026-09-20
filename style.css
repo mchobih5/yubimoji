@@ -9,12 +9,29 @@ body {
 /* ボタン共通 */
 button {
   font-size: 18px;
-  padding: 15px;
-  margin: 8px;
-  width: 80%;
-  max-width: 300px;
+  padding: 10px 14px;
+  margin: 5px;
   border-radius: 10px;
   border: none;
+}
+
+/* 選択グループ */
+.select-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* 選択ボタン */
+.select-group button {
+  width: auto;
+  min-width: 70px;
+  max-width: none;
+  padding: 10px 14px;
+  margin: 4px;
 }
 
 /* 押したときの反応 */
@@ -22,33 +39,13 @@ button:active {
   transform: scale(0.97);
 }
 
-/* 選択グループ（縦並び） */
-.select-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 選択グループ（横並び） */
-.speed-group {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.speed-group button {
-  width: auto;
-  min-width: 90px;
-  padding: 12px 16px;
-}
-
 /* スタートボタンは大きく */
 .start-btn {
   font-size: 22px;
-  padding: 18px;
+  padding: 15px 30px;
   background-color: #4CAF50;
   color: white;
+  margin-top: 12px;
 }
 
 /* 選択肢ボタン（クイズ中） */
@@ -205,5 +202,38 @@ body.test-mode #image-area img {
 
   body.test-mode input {
     font-size: 16px;
+  }
+}
+
+/* 小さいスマホ */
+@media (max-width: 400px) {
+  body {
+    padding: 3px;
+  }
+
+  #start-screen h1 {
+    font-size: 24px;
+    margin: 8px 0 12px;
+  }
+
+  #start-screen h2 {
+    font-size: 18px;
+    margin: 8px 0 5px;
+  }
+
+  .select-group {
+    gap: 2px;
+  }
+
+  .select-group button {
+    min-width: 62px;
+    font-size: 16px;
+    padding: 8px 10px;
+    margin: 3px;
+  }
+
+  .start-btn {
+    font-size: 20px;
+    padding: 13px 28px;
   }
 }
