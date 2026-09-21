@@ -262,7 +262,6 @@ function showChoices(choices) {
 
 // ===== もう一度指文字を表示（「もう一度表示」ボタン押下時）=====
 function replay() {
-
   // 連打防止
   document.getElementById("replayBtn").disabled = true;
 
@@ -270,11 +269,15 @@ function replay() {
   timers.forEach(t => clearTimeout(t));
   timers = [];
 
+  // 選択肢を消す
+  document.getElementById("choices").innerHTML = "";
+
   // 画像を消す
   document.getElementById("image-area").innerHTML = "";
 
   // もう一度同じ問題を再生
-  showImagesSequentially(current.images, false);
+  // 初回出題と同じように、表示終了後に選択肢を表示
+  showImagesSequentially(current.images, true);
 }
 
 // ===== 正誤判定 =====
