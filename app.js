@@ -21,6 +21,11 @@ let currentWords = [];
 let total = 0;
 let correct = 0;
 
+// 表示回数管理用
+let displayCount = 0;       // 現在の問題の表示回数
+let totalDisplayCount = 0;  // 全問題の表示回数合計
+let oneShotCorrect = 0;     // 1回の表示で読めて正解した問題数
+
 // ===== 文字数選択 =====
 function selectLength(len) {
   currentLength = len;
@@ -91,6 +96,9 @@ function startQuiz() {
 
   total = 0;
   correct = 0;
+  totalDisplayCount = 0;
+  displayCount = 0;
+  oneShotCorrect = 0;
   updateScore();
 
   document.getElementById("start-screen").style.display = "none";
@@ -115,6 +123,9 @@ async function nextQuiz() {
   current = currentWords[Math.floor(Math.random() * currentWords.length)];
   current.choices = generateChoices(current.text, currentWords);
   current.images = textToImages(current.text);
+
+  // 新しい問題なので表示回数をリセット
+  displayCount = 0;
 
   // ここで画像読み込み完了を待つ
   await preloadImages(current.images);
@@ -146,6 +157,9 @@ function preloadImages(charImages) {
 
 // ===== 1文字ずつ表示 =====
 function showImagesSequentially(charImages) {
+  // この問題を1回表示した
+  displayCount++;
+
   const area = document.getElementById("image-area");
 
   area.classList.remove("all-images");
@@ -286,6 +300,8 @@ function check(answer, button) {
 
   total++;
 
+  totalDisplayCount += displayCount;
+
   // クリックされたボタンだけ残す
   const choicesArea = document.getElementById("choices");
   choicesArea.innerHTML = "";
@@ -293,6 +309,9 @@ function check(answer, button) {
 
   if (isCorrect) {
     correct++;
+    if (displayCount === 1) {
+      oneShotCorrect++;
+    }
     result.textContent = "⭕ 正解！";
 
   } else {
@@ -313,8 +332,16 @@ function updateScore() {
 // ===== クイズ終了 =====
 function endQuiz() {
   const rate = total === 0 ? 0 : Math.round((correct / total) * 100);
+  const averageDisplayCount =
+    total === 0 ? 0 : (totalDisplayCount / total).toFixed(1);
 
-  alert(`お疲れさまでした！\n\n正解数: ${correct} / ${total}\n正答率: ${rate}%`);
+  alert(
+    `お疲れさまでした！\n\n` +
+    `正解数: ${correct} / ${total}\n` +
+    `正答率: ${rate}%\n` +
+    `平均表示回数: ${averageDisplayCount}回\n` +
+    `1回で読めた問題: ${oneShotCorrect}問`
+  );
 
   // リセット
   total = 0;
