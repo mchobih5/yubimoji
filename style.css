@@ -205,7 +205,7 @@ body.test-mode #image-area img {
 }
 
 /* 小さいスマホ */
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   body {
     padding: 3px;
   }
@@ -235,4 +235,4 @@ body.test-mode #image-area img {
     font-size: 22px;
     padding: 13px 28px;
   }
-}
+} */
