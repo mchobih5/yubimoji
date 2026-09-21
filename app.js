@@ -145,7 +145,7 @@ function preloadImages(charImages) {
 }
 
 // ===== 1文字ずつ表示 =====
-function showImagesSequentially(charImages, showChoice = true) {
+function showImagesSequentially(charImages) {
   const area = document.getElementById("image-area");
 
   area.classList.remove("all-images");
@@ -223,19 +223,14 @@ function showImagesSequentially(charImages, showChoice = true) {
 
   timers.push(clearTimer);
 
-  if (showChoice) {
-    const choiceTimer = setTimeout(() => {
-      showChoices(current.choices);
-    }, time + 300);
+  const choiceTimer = setTimeout(() => {
+    showChoices(current.choices);
 
-    timers.push(choiceTimer);
-  } else {
-    const enableTimer = setTimeout(() => {
-      document.getElementById("replayBtn").disabled = false;
-    }, time);
+    // 「もう一度表示」を再び押せるようにする
+    document.getElementById("replayBtn").disabled = false;
+  }, time + 300);
 
-    timers.push(enableTimer);
-  }
+  timers.push(choiceTimer);
 }
 
 // 回答選択肢を表示
@@ -277,7 +272,7 @@ function replay() {
 
   // もう一度同じ問題を再生
   // 初回出題と同じように、表示終了後に選択肢を表示
-  showImagesSequentially(current.images, true);
+  showImagesSequentially(current.images);
 }
 
 // ===== 正誤判定 =====
