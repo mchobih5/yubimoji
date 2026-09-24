@@ -323,6 +323,17 @@ function check(answer, button) {
   document.getElementById("replayBtn").disabled = true; // 追加
 }
 
+// ===== 前回の成績を取得 =====
+function getLastResult() {
+  const saved = localStorage.getItem("lastResult");
+
+  if (!saved) {
+    return null;
+  }
+
+  return JSON.parse(saved);
+}
+
 // ===== スコア更新 =====
 function updateScore() {
   document.getElementById("score").textContent =
@@ -335,13 +346,43 @@ function endQuiz() {
   const averageDisplayCount =
     total === 0 ? 0 : (totalDisplayCount / total).toFixed(1);
 
+  // 前回の成績を取得
+  const previousResult = getLastResult();
+
+  // 前回成績の表示
+  let previousText = "";
+
+  if (previousResult) {
+    previousText =
+      `\n\n前回の成績\n` +
+      `正解数: ${previousResult.correct} / ${previousResult.total}\n` +
+      `正答率: ${previousResult.rate}%\n` +
+      `平均表示回数: ${previousResult.averageDisplayCount}回\n` +
+      `1回で読めた問題: ${previousResult.oneShotCorrect}問`;
+  }
+
   alert(
     `お疲れさまでした！\n\n` +
+    `今回の成績\n` +
     `正解数: ${correct} / ${total}\n` +
     `正答率: ${rate}%\n` +
     `平均表示回数: ${averageDisplayCount}回\n` +
-    `1回で読めた問題: ${oneShotCorrect}問`
+    `1回で読めた問題: ${oneShotCorrect}問` +
+    previousText
   );
+
+  // 今回の成績を保存
+  const lastResult = {
+    length: currentLength,
+    speed: displayInterval,
+    total: total,
+    correct: correct,
+    rate: rate,
+    averageDisplayCount: Number(averageDisplayCount),
+    oneShotCorrect: oneShotCorrect
+  };
+
+  localStorage.setItem("lastResult", JSON.stringify(lastResult));
 
   // リセット
   total = 0;

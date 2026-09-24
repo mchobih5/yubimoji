@@ -59,7 +59,7 @@ const smallMap = {
 // 1文字 → フレーム配列
 // ===============================
 function getCharFrames(char) {
-  console.log(char, frames);
+  // console.log(char, frames);
   // ---------- 濁音 ----------
   if (dakutenMap[char]) {
     const base = kanaMap[dakutenMap[char]];
@@ -122,7 +122,7 @@ function getCharFrames(char) {
 
   // ---------- 特殊４フレーム「ん」 ----------
   if (["ん"].includes(char)) {
-    console.log("ん special");
+    // console.log("ん special");
     const base = kanaMap[char];
 
     return [
