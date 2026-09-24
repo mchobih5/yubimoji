@@ -111,9 +111,7 @@ function startQuiz() {
   document.getElementById("start-screen").style.display = "none";
   document.getElementById("quiz-screen").style.display = "block";
 
-  setTimeout(() => {
-    nextQuiz();
-  }, 500);
+  nextQuiz();
 }
 
 // ===== クイズ出題 =====
