@@ -66,6 +66,13 @@ function selectSpeed(speed) {
   });
 }
 
+function speedLabel(speed) {
+  if (speed === 1200) return "ゆっくり";
+  if (speed === 800) return "ふつう";
+  if (speed === 500) return "はやい";
+  return `${speed}ms`;
+}
+
 // ===== 回答選択肢生成 =====
 function generateChoices(correctWord, wordList) {
   // 正解以外を抽出
@@ -354,20 +361,20 @@ function endQuiz() {
 
   if (previousResult) {
     previousText =
-      `\n\n前回の成績\n` +
-      `正解数: ${previousResult.correct} / ${previousResult.total}\n` +
-      `正答率: ${previousResult.rate}%\n` +
-      `平均表示回数: ${previousResult.averageDisplayCount}回\n` +
-      `1回で読めた問題: ${previousResult.oneShotCorrect}問`;
+      `\n\n前回の成績（${previousResult.length}文字・${speedLabel(previousResult.speed)}）\n` +
+      `　正解数: ${previousResult.correct} / ${previousResult.total}\n` +
+      `　正答率: ${previousResult.rate}%\n` +
+      `　平均表示回数: ${previousResult.averageDisplayCount}回\n` +
+      `　1回で読めた問題: ${previousResult.oneShotCorrect}問`;
   }
 
   alert(
     `お疲れさまでした！\n\n` +
-    `今回の成績\n` +
-    `正解数: ${correct} / ${total}\n` +
-    `正答率: ${rate}%\n` +
-    `平均表示回数: ${averageDisplayCount}回\n` +
-    `1回で読めた問題: ${oneShotCorrect}問` +
+    `今回の成績（${currentLength}文字・${speedLabel(displayInterval)}）\n` +
+    `　正解数: ${correct} / ${total}\n` +
+    `　正答率: ${rate}%\n` +
+    `　平均表示回数: ${averageDisplayCount}回\n` +
+    `　1回で読めた問題: ${oneShotCorrect}問` +
     previousText
   );
 
